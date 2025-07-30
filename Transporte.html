@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transporte</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        header {
+            background-color: #222;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        nav {
+            background-color: #444;
+            padding: 0.5rem;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 1rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        main {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .hero {
+            background-color: #f5f5f5;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            border-radius: 5px;
+        }
+        
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .service-card {
+            border: 1px solid #ddd;
+            padding: 1.5rem;
+            border-radius: 5px;
+        }
+        
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 600px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Transporte Privado Premium</h1>
+        <p>Seguridad, comodidad y puntualidad</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#flota">Flota</a></li>
+            <li><a href="#empresa">Empresa</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <section id="inicio" class="hero">
+            <h2>Transporte exclusivo para clientes exigentes</h2>
+            <p>Ofrecemos un servicio de transporte privado adaptado a sus necesidades con los más altos estándares de calidad.</p>
+        </section>
+        
+        <section id="servicios">
+            <h2>Nuestros Servicios</h2>
+            <div class="services">
+                <div class="service-card">
+                    <h3>Traslados al aeropuerto</h3>
+                    <p>Servicio puntual con seguimiento de vuelos incluido para mayor comodidad.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Transporte ejecutivo</h3>
+                    <p>Vehículos premium con choferes profesionales para sus reuniones de negocios.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Eventos especiales</h3>
+                    <p>Servicio discreto para bodas, fiestas y ocasiones importantes.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="flota">
+            <h2>Nuestra Flota</h2>
+            <p>Contamos con vehículos de última generación, mantenidos bajo estrictos controles de calidad y seguridad.</p>
+            <!-- Aquí podrías añadir imágenes de los vehículos -->
+        </section>
+        
+        <section id="empresa">
+            <h2>Nuestra Empresa</h2>
+            <p>Con años de experiencia en el sector, nos destacamos por nuestro profesionalismo y atención al detalle.</p>
+        </section>
+    </main>
+    
+    <footer>
+        <p>Creado por cbo.com</p>
+    </footer>
+</body>
+</html>

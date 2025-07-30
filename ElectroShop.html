@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElectroShop</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            padding-bottom: 2rem;
+        }
+        
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        nav {
+            background-color: #004080;
+            padding: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 1rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        #cart-btn {
+            background-color: #ff9900;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 1rem;
+        }
+        
+        main {
+            padding: 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .producto {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1.2rem;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .producto:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .producto img {
+            max-width: 100%;
+            height: 200px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+        }
+        
+        .precio {
+            font-size: 1.3rem;
+            color: #B12704;
+            font-weight: bold;
+            margin: 0.5rem 0;
+        }
+        
+        .add-to-cart {
+            background-color: #FFD814;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .add-to-cart:hover {
+            background-color: #F7CA00;
+        }
+        
+        #cart {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 350px;
+            height: 100%;
+            background-color: white;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            transition: right 0.3s;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+        
+        #cart.visible {
+            right: 0;
+        }
+        
+        #cart h2 {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cart-item {
+            display: flex;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+        
+        .cart-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            margin-right: 1rem;
+        }
+        
+        .cart-item-info {
+            flex-grow: 1;
+        }
+        
+        .cart-total {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            text-align: right;
+        }
+        
+        #close-cart {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            main {
+                grid-template-columns: 1fr;
+            }
+            
+            #cart {
+                width: 90%;
+                right: -90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ElectroShop</h1>
+        <p>Los mejores electrodomésticos al mejor precio</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Productos</a></li>
+            <li><a href="#">Ofertas</a></li>
+        </ul>
+        <button id="cart-btn">🛒 Carrito (<span id="cart-count">0</span>)</button>
+    </nav>
+    
+    <main>
+        <div class="producto">
+            <img src="https://m.media-amazon.com/images/I/61lJ3xlQX1L._AC_SL1500_.jpg" alt="Instant Pot Duo">
+            <h3>Instant Pot Duo 7-en-1</h3>
+            <p>Olla a presión eléctrica, 6 Qt, 14 programas</p>
+            <div class="precio">$99.95</div>
+            <button class="add-to-cart" data-id="1" data-name="Instant Pot Duo 7-en-1" data-price="99.95" data-img="https://m.media-amazon.com/images/I/61lJ3xlQX1L._AC_SL1500_.jpg">Añadir al carrito</button>
+        </div>
+        
+        <div class="producto">
+            <img src="https://m.media-amazon.com/images/I/71YGyYaMD6L._AC_SL1500_.jpg" alt="Ninja Air Fryer">
+            <h3>Ninja AF101 Air Fryer</h3>
+            <p>Freidora de aire con capacidad para 4 qt, 1550W</p>
+            <div class="precio">$89.99</div>
+            <button class="add-to-cart" data-id="2" data-name="Ninja AF101 Air Fryer" data-price="89.99" data-img="https://m.media-amazon.com/images/I/71YGyYaMD6L._AC_SL1500_.jpg">Añadir al carrito</button>
+        </div>
+        
+        <div class="producto">
+            <img src="https://m.media-amazon.com/images/I/71D9ImsvEtL._AC_SL1500_.jpg" alt="Echo Dot 4th Gen">
+            <h3>Echo Dot (4.ª generación)</h3>
+            <p>Altavoz inteligente con Alexa, color negro</p>
+            <div class="precio">$49.99</div>
+            <button class="add-to-cart" data-id="3" data-name="Echo Dot (4.ª generación)" data-price="49.99" data-img="https://m.media-amazon.com/images/I/71D9ImsvEtL._AC_SL1500_.jpg">Añadir al carrito</button>
+        </div>
+    </main>
+    
+    <div id="cart">
+        <button id="close-cart">×</button>
+        <h2>Tu Carrito</h2>
+        <div id="cart-items"></div>
+        <div class="cart-total">Total: $<span id="cart-total">0.00</span></div>
+    </div>
+    
+    <footer>
+        <p>Creado por cbo.com</p>
+    </footer>
+
+    <script>
+        const cartBtn = document.getElementById('cart-btn');
+        const cart = document.getElementById('cart');
+        const closeCart = document.getElementById('close-cart');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartCount = document.getElementById('cart-count');
+        const cartTotal = document.getElementById('cart-total');
+        const addToCartBtns = document.querySelectorAll('.add-to-cart');
+        
+        let cartItems = [];
+        
+        // Abrir/cerrar carrito
+        cartBtn.addEventListener('click', () => {
+            cart.classList.add('visible');
+        });
+        
+        closeCart.addEventListener('click', () => {
+            cart.classList.remove('visible');
+        });
+        
+        // Añadir al carrito
+        addToCartBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const id = btn.getAttribute('data-id');
+                const name = btn.getAttribute('data-name');
+                const price = parseFloat(btn.getAttribute('data-price'));
+                const img = btn.getAttribute('data-img');
+                
+                // Verificar si el producto ya está en el carrito
+                const existingItem = cartItems.find(item => item.id === id);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cartItems.push({
+                        id,
+                        name,
+                        price,
+                        img,
+                        quantity: 1
+                    });
+                }
+                
+                updateCart();
+                cart.classList.add('visible');
+            });
+        });
+        
+        // Actualizar carrito
+        function updateCart() {
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+            let count = 0;
+            
+            if (cartItems.length === 0) {
+                cartItemsContainer.innerHTML = '<p>Tu carrito está vacío</p>';
+            } else {
+                cartItems.forEach(item => {
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'cart-item';
+                    itemElement.innerHTML = `
+                        <img src="${item.img}" alt="${item.name}">
+                        <div class="cart-item-info">
+                            <h4>${item.name}</h4>
+                            <p>$${item.price.toFixed(2)} x ${item.quantity}</p>
+                            <p>Subtotal: $${(item.price * item.quantity).toFixed(2)}</p>
+                        </div>
+                    `;
+                    cartItemsContainer.appendChild(itemElement);
+                    
+                    total += item.price * item.quantity;
+                    count += item.quantity;
+                });
+            }
+            
+            cartTotal.textContent = total.toFixed(2);
+            cartCount.textContent = count;
+        }
+    </script>
+</body>
+</html>

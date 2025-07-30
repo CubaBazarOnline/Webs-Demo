@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Webs demostrativas creadas por cbo.com">
+    <title>Webs Demostrativas</title>
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --success-color: #4cc9f0;
+            --cta-color: #2ecc71;
+            --shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f5f5f5;
+            color: var(--dark-color);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        header, .btn {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        header {
+            padding: 1rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.25rem;
+        }
+        
+        .catalog {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .template-card {
+            background: white;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .template-card:hover {
+            transform: translateY(-0.25rem);
+        }
+        
+        .template-preview {
+            aspect-ratio: 16/9;
+            border-bottom: 1px solid #eee;
+            overflow: hidden;
+        }
+        
+        .template-preview iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .template-info {
+            padding: 1rem;
+            text-align: center;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .template-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+        
+        .template-info p {
+            margin-bottom: 1rem;
+            flex: 1;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        
+        .btn-external {
+            background: var(--success-color);
+            width: 100%;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin: 1.5rem 0;
+            color: var(--primary-color);
+        }
+        
+        .cta-section {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .cta-title {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .cta-text {
+            margin-bottom: 1.5rem;
+            color: #555;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-btn {
+            background: var(--cta-color);
+            padding: 0.75rem 2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            display: inline-block;
+        }
+        
+        .cta-btn:hover {
+            background: #27ae60;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .catalog {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>CHP</h1>
+            <p>Webs demostrativas creadas por nuestra empresa</p>
+        </div>
+    </header>
+    
+    <main class="container">
+        <div class="cta-section">
+            <h2 class="cta-title">¿Te gustaría tener tu propia plataforma web?</h2>
+            <p class="cta-text">Estas demostraciones muestran solo una fracción de lo que podemos crear para ti. Visita nuestra página principal para descubrir cómo podemos ayudarte a construir una presencia web profesional que impulse tu negocio.</p>
+            <a href="https://cubabazaronline.github.io/CHP/" class="btn cta-btn" target="_blank" rel="noopener noreferrer">Obtén tu plataforma web ahora</a>
+        </div>
+        
+        <h2 class="section-title">Webs Demostrativas</h2>
+        
+        <div class="catalog" id="templateCatalog" role="list">
+            <!-- Las plantillas se cargarán aquí dinámicamente -->
+        </div>
+    </main>
+    
+    <script>
+        // Catálogo de plantillas demo
+        const templates = [
+            {
+                id: 1,
+                title: "Transferencia de Saldo Móvil",
+                description: "Sitio web profesional para servicios de transferencia de saldo.",
+                previewUrl: "Transferencia de Saldo Móvil.html",
+            },
+            {
+                id: 2,
+                title: "Transporte",
+                description: "Plataforma web para empresas de transporte y logística.",
+                previewUrl: "Transporte.html",
+            },
+            {
+                id: 3,
+                title: "Zapatería ReparaFácil",
+                description: "Sitio web moderno para negocios de reparación de calzado.",
+                previewUrl: "Zapatería ReparaFácil.html",
+            },
+            {
+                id: 4,
+                title: "ElectroShop",
+                description: "Tienda online para productos electrónicos y electrodomésticos.",
+                previewUrl: "ElectroShop.html",
+            },
+            {
+                id: 5,
+                title: "Más próximamente",
+                description: "Estamos trabajando en nuevas plantillas demostrativas.",
+                previewUrl: "#",
+            }
+        ];
+        
+        // Cache de elementos del DOM
+        const dom = {
+            templateCatalog: document.getElementById('templateCatalog')
+        };
+        
+        // Cargar plantillas en el catálogo
+        function loadTemplates() {
+            const fragment = document.createDocumentFragment();
+            
+            templates.forEach(template => {
+                const templateCard = document.createElement('article');
+                templateCard.className = 'template-card';
+                templateCard.innerHTML = `
+                    <div class="template-preview">
+                        <iframe src="${template.previewUrl}" 
+                                title="Vista previa de ${template.title}" 
+                                loading="lazy"
+                                sandbox="allow-same-origin allow-scripts"></iframe>
+                    </div>
+                    <div class="template-info">
+                        <h3>${template.title}</h3>
+                        <p>${template.description}</p>
+                        <a href="${template.previewUrl}" 
+                           class="btn btn-external" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           aria-label="Abrir ${template.title} en nueva pestaña">
+                            Ver demostración
+                        </a>
+                    </div>
+                `;
+                
+                fragment.appendChild(templateCard);
+            });
+            
+            dom.templateCatalog.appendChild(fragment);
+        }
+        
+        // Cargar plantillas cuando el DOM esté listo
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadTemplates);
+        } else {
+            loadTemplates();
+        }
+    </script>
+</body>
+</html>
